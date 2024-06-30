@@ -1,0 +1,6 @@
+[submodule "thirdparty/nanopb"]
+	path = thirdparty/nanopb
+	url = https://github.com/nanopb/nanopb
+[submodule "thirdparty/splitflap"]
+	path = thirdparty/splitflap
+	url = https://github.com/scottbez1/splitflap
