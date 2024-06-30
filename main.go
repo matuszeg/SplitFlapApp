@@ -1,7 +1,16 @@
 package main
 
-import "SplitFlapApp/proto"
+import (
+	"SplitFlapApp/proto"
+	"SplitFlapApp/restfulApi"
+)
 
 func main() {
-	proto.GenerateProtoFiles()
+	if proto.ShouldGenerateProtoFiles() {
+		proto.GenerateProtoFiles()
+	}
+
+	restfulManager := restfulApi.NewRestfulManager()
+
+	restfulManager.Start(false)
 }

@@ -10,6 +10,24 @@ import (
 	"strings"
 )
 
+func ShouldGenerateProtoFiles() bool {
+	currentDirectoryPath, err := os.Getwd()
+	if err != nil {
+		panic("Unable to get current directory")
+	}
+
+	splitFlapGoFile := filepath.Join(currentDirectoryPath, "generated", "splitflap.pb.go")
+	nanopbGoFile := filepath.Join(currentDirectoryPath, "generated", "nanopb", "nanopb.pb.go")
+
+	if _, err := os.Stat(splitFlapGoFile); os.IsExist(err) {
+		if _, err := os.Stat(nanopbGoFile); os.IsExist(err) {
+			return false
+		}
+	}
+
+	return true
+}
+
 func GenerateProtoFiles() {
 	currentDirectoryPath, err := os.Getwd()
 	if err != nil {
